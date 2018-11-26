@@ -62,10 +62,10 @@ int main() {
 }
 
 /*
-@func CreateNewAdjNode
-@param int dest, int weight
-@ret AdjListNode* newNode
-@desc A function to create and initilize the node with a dest and weight.
+@func CreateGraph
+@param int vert
+@ret Graph* g
+@desc A function to create a new Graph*, inits values.
 */
 Graph* CreateGraph(int numVert) {
 	// Create a new graph

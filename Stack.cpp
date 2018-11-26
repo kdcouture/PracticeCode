@@ -1,11 +1,9 @@
 /*
-Kevin Couture
-
-Stack
+Stack.cpp
 
 @desc Contains the stack structure and
-all related functions. Tests are 
-preformed in the main. 
+ all related functions. Tests are 
+ preformed in the main. 
 
 Stack is implemented as a linked list.
 

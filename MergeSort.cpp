@@ -1,8 +1,18 @@
+/*
+MergeSort.cpp
+
+@desc This file contains the C++ code for
+ the merge sort function on a given int array.
+*/
+
+// Includes
+
 #include <iostream>
 
 using namespace std;
 
-// Prototype
+// Prototypes
+
 void mergeSort(int arr[], int l, int r);
 void merge(int arr[], int l, int m, int r);
 void printArray(int arr[], int size);
@@ -21,31 +31,47 @@ int main(){
 	return 0;
 }
 
-void mergeSort(int arr[], int l, int r) {
+/*
+@func mergeSort
+@param int[] arr, int L, int r
+@ret VOID
+@desc This function recursivly calls iteself
+ to sort an array. The function breaks the array
+ int to two subarrays until the base case of a single
+ element.
+*/
+void mergeSort(int arr[], int L, int r) {
 
 	// Base Case size = 1 : check for array of size 1
-	if (l >= 0 && l < r) {
+	if (L >= 0 && L < r) {
 		// Find the middle element
-		int mid = l + (r - l) / 2;
+		int mid = L + (r - L) / 2;
 	
 		// Recursive sort calls
-		mergeSort(arr, l, mid);
+		mergeSort(arr, L, mid);
 		mergeSort(arr, mid+1, r);
 		// Merge arrays
-		merge(arr, l, mid, r);
+		merge(arr, L, mid, r);
 	}
 	else {
 		return;
 	}
 }
 
+/*
+@func merge
+@param int[] arr, int L, int m, int r
+@ret VOID
+@desc A function that will sort the two subarrays
+ while updating the original array.
+*/
 void merge(int arr[], int L, int m, int r) {
 	// Prepare variables
 	int lSize = m - L + 1;
 	int rSize = r - m;
 	int lIdx = 0;
 	int rIdx = 0;
-	int arrIdx = L; // Current section start of original array
+	int arrIdx = L; // Current segment start of original array
 	// Create temp storage
 	int* lArr = new int[lSize];
 	int* rArr = new int[rSize];
@@ -79,8 +105,19 @@ void merge(int arr[], int L, int m, int r) {
 		rIdx++;
 		arrIdx++;
 	}
+	// Free Memory
+	delete[] lArr;
+	delete[] rArr;
+	lArr = NULL;
+	rArr = NULL;
 }
 
+/*
+@func printArray
+@param int[] arr, int size
+@ret VOID
+@desc A function to print the given array.
+*/
 void printArray(int arr[], int size)
 {
 	cout << "Current Array : ";

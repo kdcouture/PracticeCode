@@ -1,8 +1,14 @@
 /*
+MinHeap.cpp
+
 Min heap class
-This file contains the min heap class and its
-related functions. Note: the heap size determins
-the vaild heap bound.
+
+@desc This file contains the min heap class and its
+ related functions. Note: the heap size determins
+ the vaild heap bound.
+ 
+Note: currently only works with nums from INT_MIN to 998
+ 
 */
 
 #include <iostream>
@@ -68,7 +74,7 @@ MinHeap::MinHeap(int cap)
 	heapEls = new int[capacity];
 	heapSize = 0;
 	for (int i = 0; i < capacity; i++) {
-		heapEls[i] = 999;
+		heapEls[i] = 999; // inits to 999 for unasigned elements.
 	}
 }
 
@@ -97,6 +103,14 @@ void MinHeap::MinHeapify(int idx)
 	}
 }
 
+/*
+@func removeMin
+@param VOID
+@ret int min
+@desc Returns the minimum element of the minheap
+ and removes the node from the heap. Heapifies 
+ to ensure valid minheap.
+*/
 int MinHeap::removeMin()
 {
 	// Check for empty heap
@@ -111,7 +125,8 @@ int MinHeap::removeMin()
 	// Remove top element and reheapify
 	else {
 		int minEle = heapEls[0];
-		heapEls[0] = heapEls[heapSize - 1];
+		//heapEls[0] = heapEls[heapSize - 1];
+		heapEls[0] = 999;
 		heapSize--;
 		MinHeapify(0);
 		return minEle;
@@ -119,6 +134,14 @@ int MinHeap::removeMin()
 	return -1;
 }
 
+/*
+@func insertEle
+@param int data
+@ret VOID
+@desc Creates a node with the given data then
+ adds it to the bottom of the heap. Modifies heap to ensure it
+ it remains valid after the insert.
+*/
 void MinHeap::insertEle(int data)
 {
 	// Check if space exists
@@ -138,11 +161,19 @@ void MinHeap::insertEle(int data)
 	}
 }
 
+/*
+@func deleteEle
+@param int data
+@ret VOID
+@desc Searches the heap for a node containing
+ the given data. Removes it from the heap 
+*/
 void MinHeap::deleteEle(int data)
 {
 	for (int i = 0; i < heapSize; i++) {
 		if (heapEls[i] == data) {
-			heapEls[i] = heapEls[heapSize - 1];
+			//heapEls[i] = heapEls[heapSize - 1];
+			heapEls[0] = 999;
 			heapSize--;
 			MinHeapify(i);
 			break;

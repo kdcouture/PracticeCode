@@ -1,3 +1,11 @@
+/*
+Graph_List.cpp
+
+@desc This file contains the data structures needed to implement
+ a undirected weighted graph in c++ using linked lists. Includes 
+ utility functions such as Dijkstras shortest path finding.
+*/
+
 #include <iostream>
 
 using namespace std;

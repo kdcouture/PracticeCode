@@ -63,9 +63,9 @@ int main() {
 
 /*
 @func CreateGraph
-@param int vert
+@param int numVert
 @ret Graph* g
-@desc A function to create a new Graph*, inits values.
+@desc A function to create a new Graph* with numVert vertices, inits values.
 */
 Graph* CreateGraph(int numVert) {
 	// Create a new graph

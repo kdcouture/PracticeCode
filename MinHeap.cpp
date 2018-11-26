@@ -125,8 +125,7 @@ int MinHeap::removeMin()
 	// Remove top element and reheapify
 	else {
 		int minEle = heapEls[0];
-		//heapEls[0] = heapEls[heapSize - 1];
-		heapEls[0] = 999;
+		heapEls[0] = heapEls[heapSize - 1];
 		heapSize--;
 		MinHeapify(0);
 		return minEle;
@@ -172,8 +171,7 @@ void MinHeap::deleteEle(int data)
 {
 	for (int i = 0; i < heapSize; i++) {
 		if (heapEls[i] == data) {
-			//heapEls[i] = heapEls[heapSize - 1];
-			heapEls[0] = 999;
+			heapEls[i] = heapEls[heapSize - 1];
 			heapSize--;
 			MinHeapify(i);
 			break;

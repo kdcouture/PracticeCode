@@ -1,14 +1,8 @@
 /*
-MinHeap.cpp
-
 Min heap class
-
-@desc This file contains the min heap class and its
- related functions. Note: the heap size determins
- the vaild heap bound.
- 
-Note: currently only works with nums from INT_MIN to 998
- 
+This file contains the min heap class and its
+related functions. Note: the heap size determins
+the vaild heap bound.
 */
 
 #include <iostream>
@@ -16,6 +10,10 @@ Note: currently only works with nums from INT_MIN to 998
 using namespace std;
 
 // Uitility function
+
+// Heap sort
+int* heapSort(int* arr, int size);
+
 // Swaps two integers.
 void swap(int* a, int* b) {
 	int temp = *a;
@@ -64,7 +62,6 @@ public:
 	int removeMin();
 	void insertEle(int data);
 	void deleteEle(int data);
-	
 };
 
 // Heap constructor
@@ -74,7 +71,7 @@ MinHeap::MinHeap(int cap)
 	heapEls = new int[capacity];
 	heapSize = 0;
 	for (int i = 0; i < capacity; i++) {
-		heapEls[i] = 999; // inits to 999 for unasigned elements.
+		heapEls[i] = 999;
 	}
 }
 
@@ -103,14 +100,6 @@ void MinHeap::MinHeapify(int idx)
 	}
 }
 
-/*
-@func removeMin
-@param VOID
-@ret int min
-@desc Returns the minimum element of the minheap
- and removes the node from the heap. Heapifies 
- to ensure valid minheap.
-*/
 int MinHeap::removeMin()
 {
 	// Check for empty heap
@@ -133,14 +122,6 @@ int MinHeap::removeMin()
 	return -1;
 }
 
-/*
-@func insertEle
-@param int data
-@ret VOID
-@desc Creates a node with the given data then
- adds it to the bottom of the heap. Modifies heap to ensure it
- it remains valid after the insert.
-*/
 void MinHeap::insertEle(int data)
 {
 	// Check if space exists
@@ -160,13 +141,6 @@ void MinHeap::insertEle(int data)
 	}
 }
 
-/*
-@func deleteEle
-@param int data
-@ret VOID
-@desc Searches the heap for a node containing
- the given data. Removes it from the heap 
-*/
 void MinHeap::deleteEle(int data)
 {
 	for (int i = 0; i < heapSize; i++) {
@@ -179,15 +153,27 @@ void MinHeap::deleteEle(int data)
 	}
 }
 
+
+int* heapSort(int* arr, int size) {
+	MinHeap h(arr[0]);
+	int* sortedArr = new int[size];
+	for (int i = 0; i < size; i++) {
+		h.insertEle(arr[i]);
+	}
+	for (int j = 0; j < size; j++) {
+		sortedArr[j] = h.removeMin();
+	}
+	return sortedArr;
+}
+
 int main()
 {
-	MinHeap h(11);
-	h.insertEle(3);
-	h.insertEle(2);
+	MinHeap h(10);
+	h.insertEle(7);
+	h.insertEle(6);
 	h.deleteEle(1);
-	h.insertEle(15);
-	h.insertEle(5);
-	h.insertEle(4);
+	h.insertEle(16);
+	h.insertEle(8);
 	h.printHeapArray();
 	cout << h.getMin() << endl;
 	cout << h.removeMin() << endl;
@@ -195,6 +181,16 @@ int main()
 	cout << h.removeMin() << endl;
 	h.printHeapArray();
 	cout << h.getMin() << endl;
+	int* arr = new int[7];
+	int size = 7;
+	for (int i = 0; i < size; i++) {
+		arr[i] = 52 - i;
+	}
+	int* sorted = heapSort(arr, size);
+	for (int j = 0; j < size; j++) {
+		cout << sorted[j] << " ";
+	} cout << endl;
+
 	system("pause");
 	return 0;
 }

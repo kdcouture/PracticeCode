@@ -156,7 +156,7 @@ int minDistHelper(Graph* g, int* distArray, bool* visitedArray) {
 @func  Dijkstras
 @param Graph* g, int start, int dest
 @ret VOID
-@desc An implementation of Dijkstras Algorithim using a link list structured  weighted graph.
+@desc An implementation of Dijkstras Algorithim using a link list structured weighted graph.
 */
 void Dijkstras(Graph* g, int start, int dest) {
 	// Create an array to store distances
